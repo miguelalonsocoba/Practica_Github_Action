@@ -1,20 +1,21 @@
 name: learn-github-actions # The name of the workflow
 run-name: ${{ github.actor }} is learnig GitHub Actions # The name for workflow runs, which will appear in the list of workflow runs on your repository's "Actions" tab.
-on:
+on: # Spedifies the trigger for this workflow. El ejemplo utiliza el evento push sobre la rama main.
   push:
     branches:
       - main
-jobs:
-  check-bats-version:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code...
-        uses: actions/checkout@v4
+jobs: # Groups together all the jobs that run int the workflow
+  check-bats-version: # Dfines a name for the job
+    runs-on: ubuntu-latest # Configures the job to run on the latest version of an Ubuntu Linux runner.
+    steps: # Groups together all the steps that run in the job
+      # Implements always steps for every job
+      - name: Checkout code... # Defines a name for the step
+        uses: actions/checkout@v4 # Uses an action in the GitHub Action repository to check out a code repository.
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: "20"
       - name: Install Bats
-        run: npm install -g bats
+        run: npm install -g bats # The run keywork tells the job to execute a command on the runner.
       - name: Get Bats version
         run: bats --version
