@@ -9,13 +9,13 @@ jobs: # Groups together all the jobs that run int the workflow
     runs-on: ubuntu-latest # Configures the job to run on the latest version of an Ubuntu Linux runner.
     steps: # Groups together all the steps that run in the job
       # Implements always steps for every job
-      - name: Checkout code... # Defines a name for the step
+      - name: Check out repository... # Defines a name for the step
         uses: actions/checkout@v4 # Uses an action in the GitHub Action repository to check out a code repository.
-      - name: Setup Node
+      - name: Install Node.js
         uses: actions/setup-node@v4
         with:
           node-version: "20"
       - name: Install Bats
         run: npm install -g bats # The run keywork tells the job to execute a command on the runner.
-      - name: Get Bats version
+      - name: Run bats
         run: bats --version
