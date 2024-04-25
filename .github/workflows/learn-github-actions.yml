@@ -1,5 +1,6 @@
-name: learn-github-actions
-run-name: ${{ github.actor}} is learnig GitHub Actions
+name: learn-github-actions # The name of the workflow
+# run-name: ${{ github.actor }} is learnig GitHub Actions # The name for workflow runs, which will appear in the list of workflow runs on your repository's "Actions" tab.
+run-name: Deploy to ${{ inputs.deploy_target }} by @${{ github.actor }}
 on: [push]
 jobs:
   check-bats-version:
